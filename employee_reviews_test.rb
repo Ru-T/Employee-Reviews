@@ -35,7 +35,7 @@ class EmployeeReviewTest < Minitest::Test
       Employee.new
     end
     assert_raises(ArgumentError) do
-      Employee.new(1, 2, 3)
+      Employee.new(1, 2, 3, 4, 5)
     end
   end
 
@@ -59,12 +59,12 @@ class EmployeeReviewTest < Minitest::Test
 
   #Get a total salary for all employees in a department.
   def test_get_total_salary_department
-    Department.new("Law")
+    law = Department.new("Law")
     employee = Employee.new("Ilan", "ilan@gmail.com", "900-432-4320", 80000)
     law << employee
     employee2 = Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", 100000)
     law << employee2
-    assert_equal 180000, 
+    assert_equal 180000, law.total_employee_salary 
   end
 
 

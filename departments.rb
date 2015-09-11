@@ -11,4 +11,8 @@ attr_reader :name, :employees
     @employees << item
   end
 
+  def total_employee_salary
+    @employees.reduce(0){|sum, employee| sum + employee.salary}
+  end
+
 end
