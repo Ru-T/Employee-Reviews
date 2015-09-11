@@ -7,6 +7,13 @@ class Employee
     @email = email
     @phone = phone
     @salary = salary
+    @reviews = []
+
+  def reviews(item)
+    @reviews << item
+    @reviews
+  end
+
   end
 
 end

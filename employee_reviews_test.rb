@@ -57,16 +57,21 @@ class EmployeeReviewTest < Minitest::Test
     assert_equal "Law", Department.new("Law").name
   end
 
-  #Get a total salary for all employees in a department.
   def test_get_total_salary_department
     law = Department.new("Law")
     employee = Employee.new("Ilan", "ilan@gmail.com", "900-432-4320", 80000)
     law << employee
     employee2 = Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", 100000)
     law << employee2
-    assert_equal 180000, law.total_employee_salary 
+    assert_equal 180000, law.total_employee_salary
   end
 
+#Add some employee review text (a paragraph or two) to an employee.
+  def test_add_review_to_employee
+    employee = Employee.new("Ruti")
+    review = "This employee is truly awesome!"
+    assert_equal ["This employee is truly awesome!"], employee.reviews(review)
+  end
 
 end
 
