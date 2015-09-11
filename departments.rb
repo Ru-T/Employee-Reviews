@@ -1,6 +1,6 @@
 class Department
 
-attr_reader :name
+attr_reader :name, :employees
 
   def initialize(name, employees = [])
     @name = name
