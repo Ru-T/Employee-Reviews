@@ -72,6 +72,14 @@ class EmployeeReviewTest < Minitest::Test
     assert_equal ["This employee is truly awesome!"], employee.reviews(review)
   end
 
+  def test_employee_performance #Mark whether an employee is performing satisfactorily or not satisfactorily.
+    employee = Employee.new("Ruti")
+    employee.performing_well
+    assert employee.performance
+    employee.performing_poorly
+    refute employee.performance
+  end
+
 end
 
 

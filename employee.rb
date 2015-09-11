@@ -1,6 +1,6 @@
 class Employee
 
-  attr_reader :name, :email, :phone, :salary, :reviews
+  attr_reader :name, :email, :phone, :salary, :reviews, :performance
 
   def initialize(name, email = "", phone = "", salary = 0)
     @name = name
@@ -8,13 +8,20 @@ class Employee
     @phone = phone
     @salary = salary
     @reviews = []
-    @performance = performance
+    @performance = false
+  end
 
   def reviews(item)
     @reviews << item
     @reviews
   end
 
+  def performing_well
+    @performance = true
   end
+
+  def performing_poorly
+    @performance = false
+  end  
 
 end
