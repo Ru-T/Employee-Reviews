@@ -26,8 +26,8 @@ class Employee
     end
   end
 
-  def give_raise(percent)
-    @salary + @salary * percent
+  def give_raise(amount)
+    @salary = @salary + amount
   end
 
 end

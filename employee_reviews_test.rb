@@ -51,10 +51,6 @@ class EmployeeReviewTest < Minitest::Test
     assert_equal 100000, ruti.salary
   end
 
-  # def test_get_employee_salary
-  #   assert_equal 100000, Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", 100000).salary
-  # end
-
   def test_get_department_name
     assert_equal "Law", Department.new("Law").name
   end
@@ -82,11 +78,31 @@ class EmployeeReviewTest < Minitest::Test
     refute employee.performance
   end
 
-  #Give a raise to an individual. You decide if this makes sense in dollars or in percent.
-  def individual_raise
-    employee = Employee.new(name: "Ruti", salary: 100000)
-    assert_equal 120000, employee.give_raise(0.20)
+  def test_individual_raise
+    employee = Employee.new("Ruti", "", "", 100000)
+    assert_equal 120000, employee.give_raise(20000)
   end
+
+# Give raises to a department's employees. You must pass this method a
+# total dollar amount, and it must distribute the raise amounts reasonably
+# to the department's employees. Only employees who are performing satisfactorily
+# should get raises.
+  def test_department_raise #modify this test to include the performance logic
+    law = Department.new("Law")
+    employee = Employee.new("Ruti", "", "", 100000)
+    law << employee
+    employee2 = Employee.new("Ilan", "", "", 80000)
+    employee2.set_performance("Good")
+    law << employee2
+    employee3 = Employee.new("Joelle", "", "", 120000)
+    employee3.set_performance("Bad")
+    law << employee3
+    law.department_raise(9000)
+    assert_equal 103000, employee.salary
+    assert_equal 93000, employee2.salary
+    assert_equal 123000, employee3.salary
+  end
+
 
 end
 
