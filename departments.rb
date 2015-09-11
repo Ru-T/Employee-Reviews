@@ -15,9 +15,9 @@ attr_reader :name, :employees
     @employees.reduce(0){|sum, employee| sum + employee.salary}
   end
 
-  # def department_raise(amount)
-  #   @employees.each {|employee| employee.give_raise(amount / @employees.length)}
-  #   #@employees.each {|employee| employee.salary = (employee.salary + amount / @employees.length)}# if employee.performance == true}
-  # end
+  def department_raise(amount)
+    @employees.each {|employee| employee.give_raise(amount / @employees.length)}# if employee.performance == true}
+    #@employees.each {|employee| employee.salary = (employee.salary + amount / @employees.length)}# }
+  end
 
 end

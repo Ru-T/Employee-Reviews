@@ -99,7 +99,7 @@ class EmployeeReviewTest < Minitest::Test
     law << employee3
     law.department_raise(9000)
     assert_equal 103000, employee.salary
-    assert_equal 93000, employee2.salary
+    assert_equal 83000, employee2.salary
     assert_equal 123000, employee3.salary
   end
 
