@@ -66,7 +66,6 @@ class EmployeeReviewTest < Minitest::Test
     assert_equal 180000, law.total_employee_salary
   end
 
-#Add some employee review text (a paragraph or two) to an employee.
   def test_add_review_to_employee
     employee = Employee.new("Ruti")
     review = "This employee is truly awesome!"
