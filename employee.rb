@@ -8,7 +8,7 @@ class Employee
     @phone = phone
     @salary = salary
     @reviews = []
-    @performance = false
+    @performance = "Performance is not yet set."
   end
 
   def reviews(item)
@@ -16,12 +16,18 @@ class Employee
     @reviews
   end
 
-  def performing_well
-    @performance = true
+  def set_performance(input)
+    if input == "Good"
+      @performance = true
+    elsif input == "Bad"
+      @performance = false
+    else
+      puts "This is not a valid way to set performance."
+    end
   end
 
-  def performing_poorly
-    @performance = false
-  end  
+  def give_raise(percent)
+    @salary + @salary * percent
+  end
 
 end

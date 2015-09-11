@@ -45,13 +45,15 @@ class EmployeeReviewTest < Minitest::Test
     assert law << employee
   end
 
-  def test_get_employee_name
-    assert_equal "Ruti", Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", 100000).name
+  def test_get_employee_info
+    ruti = Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", 100000)
+    assert_equal "Ruti", ruti.name
+    assert_equal 100000, ruti.salary
   end
 
-  def test_get_employee_salary
-    assert_equal 100000, Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", 100000).salary
-  end
+  # def test_get_employee_salary
+  #   assert_equal 100000, Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", 100000).salary
+  # end
 
   def test_get_department_name
     assert_equal "Law", Department.new("Law").name
@@ -74,10 +76,16 @@ class EmployeeReviewTest < Minitest::Test
 
   def test_employee_performance #Mark whether an employee is performing satisfactorily or not satisfactorily.
     employee = Employee.new("Ruti")
-    employee.performing_well
+    employee.set_performance("Good")
     assert employee.performance
-    employee.performing_poorly
+    employee.set_performance("Bad")
     refute employee.performance
+  end
+
+  #Give a raise to an individual. You decide if this makes sense in dollars or in percent.
+  def individual_raise
+    employee = Employee.new(name: "Ruti", salary: 100000)
+    assert_equal 120000, employee.give_raise(0.20)
   end
 
 end
