@@ -20,32 +20,22 @@ class EmployeeReviewTest < Minitest::Test
   end
 
   def test_initialize_department
-    assert_equal "Law", Department.new("Law").name
+    assert Department.new("Law")
   end
 
   def test_intialize_employee
-    assert_equal "Ruti", Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", "$100,000").name
-    assert_equal "rwajnberg@gmail.com", Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", "$100,000").email
-    assert_equal "908-432-4320", Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", "$100,000").phone
-    assert_equal "$100,000", Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", "$100,000").salary
+    assert Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", "$100,000")
+  end
+
+  def test_add_employee_to_department
+    law = Department.new("Law", ["Ruti Wajnberg"])
+    assert law << "Ilan Man"
   end
 
 end
 
-  #
-  #   def test_initialize_employee
-  #     assert OddArray.new([1, 2, 3])
-  #     assert_raises(ArgumentError) do
-  #       OddArray.new
-  #     end
-  #     assert_raises(ArgumentError) do
-  #       OddArray.new(1, 2, 3)
-  #     end
-  #   end
-  # # def self.test_order
-  # #   :alpha
-  # # end
-  #
-  #
-  #
-  # #placeholder for Test 2 depending on logic between Module of Departments and Employees
+
+# assert_equal "Ruti", Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", "$100,000").name
+# assert_equal "rwajnberg@gmail.com", Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", "$100,000").email
+# assert_equal "908-432-4320", Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", "$100,000").phone
+# assert_equal "$100,000", Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", "$100,000").salary

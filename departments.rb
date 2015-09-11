@@ -7,4 +7,8 @@ attr_reader :name
     @employees = employees
   end
 
+  def <<(item)
+    @employees << item
+  end
+
 end
