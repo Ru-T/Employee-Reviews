@@ -17,7 +17,6 @@ attr_reader :name, :employees
 
   def department_raise(amount)
     @employees.each {|employee| employee.give_raise(amount / @employees.length)}# if employee.performance == true}
-    #@employees.each {|employee| employee.salary = (employee.salary + amount / @employees.length)}# }
   end
 
 end

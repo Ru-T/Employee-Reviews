@@ -83,10 +83,6 @@ class EmployeeReviewTest < Minitest::Test
     assert_equal 120000, employee.give_raise(20000)
   end
 
-# Give raises to a department's employees. You must pass this method a
-# total dollar amount, and it must distribute the raise amounts reasonably
-# to the department's employees. Only employees who are performing satisfactorily
-# should get raises.
   def test_department_raise #modify this test to include the performance logic
     law = Department.new("Law")
     employee = Employee.new("Ruti", "", "", 100000)
