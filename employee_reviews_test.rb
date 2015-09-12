@@ -98,5 +98,30 @@ class EmployeeReviewTest < Minitest::Test
     assert_equal 120000, employee3.salary
   end
 
+  def test_department_raise_block
+    law = Department.new("Law")
+    employee = Employee.new("Ruti", "", "", 100000)
+    law << employee
+    employee2 = Employee.new("Ilan", "", "", 80000)
+    employee2.set_performance("Good")
+    law << employee2
+    employee3 = Employee.new("Joelle", "", "", 120000)
+    employee3.set_performance("Bad")
+    law << employee3
+    law.department_raise_block(9000){|employee| employee.performance == true}
+    assert_equal 100000, employee.salary
+    assert_equal 83000, employee2.salary
+    assert_equal 120000, employee3.salary
+
+    law.department_raise_block(9000){|employee| employee.salary > 90000}
+    assert_equal 103000, employee.salary
+    assert_equal 83000, employee2.salary
+    assert_equal 123000, employee3.salary
+
+    law.department_raise_block(9000){|employee| employee.salary < 100000}
+    assert_equal 103000, employee.salary
+    assert_equal 86000, employee2.salary
+    assert_equal 123000, employee3.salary
+  end
 
 end

@@ -23,4 +23,11 @@ attr_reader :name, :employees
     end
   end
 
+  def department_raise_block(amount)
+    @employees.each do |employee|
+      if yield(employee)
+        employee.give_raise(amount/@employees.length)
+      end
+    end
+  end
 end
