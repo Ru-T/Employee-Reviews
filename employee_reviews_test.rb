@@ -1,7 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 
-#Note: This line is going to fail first.
 require './employee_reviews.rb'
 
 $mock_inputs = []
@@ -94,14 +93,10 @@ class EmployeeReviewTest < Minitest::Test
     employee3.set_performance("Bad")
     law << employee3
     law.department_raise(9000)
-    assert_equal 103000, employee.salary
+    assert_equal 100000, employee.salary
     assert_equal 83000, employee2.salary
-    assert_equal 123000, employee3.salary
+    assert_equal 120000, employee3.salary
   end
 
 
 end
-
-
-# assert_equal "rwajnberg@gmail.com", Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", "$100,000").email
-# assert_equal "908-432-4320", Employee.new("Ruti", "rwajnberg@gmail.com", "908-432-4320", "$100,000").phone
