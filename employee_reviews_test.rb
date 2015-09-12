@@ -95,7 +95,7 @@ class EmployeeReviewTest < Minitest::Test
     law << employee3
     law.department_raise(9000)
     assert_equal 100000, employee.salary
-    assert_equal 83000, employee2.salary
+    assert_equal 89000, employee2.salary
     assert_equal 120000, employee3.salary
   end
 
@@ -111,18 +111,18 @@ class EmployeeReviewTest < Minitest::Test
     law << employee3
     law.department_raise_block(9000){|employee| employee.performance == true}
     assert_equal 100000, employee.salary
-    assert_equal 83000, employee2.salary
+    assert_equal 89000, employee2.salary
     assert_equal 120000, employee3.salary
 
     law.department_raise_block(9000){|employee| employee.salary > 90000}
-    assert_equal 103000, employee.salary
-    assert_equal 83000, employee2.salary
-    assert_equal 123000, employee3.salary
+    assert_equal 104500, employee.salary
+    assert_equal 89000, employee2.salary
+    assert_equal 124500, employee3.salary
 
     law.department_raise_block(9000){|employee| employee.salary < 100000}
-    assert_equal 103000, employee.salary
-    assert_equal 86000, employee2.salary
-    assert_equal 123000, employee3.salary
+    assert_equal 104500, employee.salary
+    assert_equal 98000, employee2.salary
+    assert_equal 124500, employee3.salary
   end
 
 end
