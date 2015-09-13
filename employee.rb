@@ -4,7 +4,8 @@ class Employee
 
   attr_reader :name, :email, :phone, :salary, :reviews, :performance
 
-  def initialize(name, email = "", phone = "", salary = 0)
+  #def initialize(name, email = "", phone = "", salary = 0)
+  def initialize(name:, email: "", phone: "", salary: 0)
     @name = name
     @email = email
     @phone = phone
@@ -40,7 +41,6 @@ class Employee
       n_prefixes = @reviews[-1].scan(/#{prefix}\w+/i) #why isn't ^ working here??
       counter -= n_prefixes.length
     end
-    puts counter #DELETE ONCE WORKING
     if counter >= 1
        @performance = true
     elsif counter <= 0
