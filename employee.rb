@@ -13,22 +13,25 @@ class Employee
     @performance = "Performance is not yet set."
   end
 
-# create one variable counter for pos and neg that starts at 0. increment for each condition in a weighted fashion.
   def reviews(input)
     @reviews << input
     counter = 0
-    case
-      when @reviews[-1].scan(/asset/) != []#rules here to check if positive
-        counter += 1 * @reviews[-1].scan(/asset/).length
-        puts counter
-      when @reviews[-1].scan(/negative/) != []#rules here to check if negative
-        counter -= 1 * @reviews[-1].scan(/negative/).length
-        puts counter
+    positive = []
+    positive_words = ["asset", "pleasure", "happy", "perfect"]
+    positive_words.each do |word|
+      positive = @reviews[-1].scan(/\b#{word}\b/i)
+      counter += positive.length
     end
-    if counter > 0
-      @performance = true
+    negative = []
+    negative_words = ["improvement", "difficult", "confusion", "interrupt"]
+    negative_words.each do |word|
+      negative = @reviews[-1].scan(/\b#{word}\b/i)
+      counter -= negative.length
+    end
+    if counter >= 1
+       @performance = true
     elsif counter <= 0
-      @performance = false
+       @performance = false
     else puts "Sorry - this review cannot determine the employee's performance."
     end
   end

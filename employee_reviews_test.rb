@@ -67,7 +67,8 @@ class EmployeeReviewTest < Minitest::Test
   def test_add_review_to_employee_and_auto_set_performance
     # employee = Employee.new("Ruti")
     # review = "This employee is truly awesome!"
-    # assert_equal ["This employee is truly awesome!"], employee.reviews(review)
+    # employee.reviews(review)
+    # assert_equal ["This employee is truly awesome!"], @reviews
 
     employee2 = Employee.new("Zeke")
     review2 = "Zeke is a very positive person and encourages those around him, but he has not done well technically this year.  There are two areas in which Zeke has room for improvement.  First, when communicating verbally (and sometimes in writing), he has a tendency to use more words than are required.  This conversational style does put people at ease, which is valuable, but it often makes the meaning difficult to isolate, and can cause confusion.
@@ -76,7 +77,7 @@ class EmployeeReviewTest < Minitest::Test
     assert_equal false, employee2.performance
 
     employee3 = Employee.new("Wanda")
-    review3 = "asset asset Wanda has been an incredibly consistent and effective developer.  Clients are always satisfied with her work, developers are impressed with her productivity, and she's more than willing to help others even when she has a substantial workload of her own.  She is a great asset to Awesome Company, and everyone enjoys working with her.  During the past year, she has largely been devoted to work with the Cement Company, and she is the perfect woman for the job.  We know that work on a single project can become monotonous, however, so over the next few months, we hope to spread some of the Cement Company work to others.  This will also allow Wanda to pair more with others and spread her effectiveness to other projects."
+    review3 = "Wanda has been an incredibly consistent and effective developer.  Clients are always satisfied with her work, developers are impressed with her productivity, and she's more than willing to help others even when she has a substantial workload of her own.  She is a great asset to Awesome Company, and everyone enjoys working with her.  During the past year, she has largely been devoted to work with the Cement Company, and she is the perfect woman for the job.  We know that work on a single project can become monotonous, however, so over the next few months, we hope to spread some of the Cement Company work to others.  This will also allow Wanda to pair more with others and spread her effectiveness to other projects."
     employee3.reviews(review3)
     assert_equal true, employee3.performance
   end
