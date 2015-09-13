@@ -11,4 +11,4 @@
 ## PART 3
 
 # Estimate before beginning project: 4 hours
-# Revised estimate after completing this project: 
+# Revised estimate after completing this project: 2 hours on the structure, another hour on finding and adding language. Total: 3 hours.
