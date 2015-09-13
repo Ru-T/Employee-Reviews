@@ -15,14 +15,16 @@ class Employee
 
   def reviews(input)
     @reviews << input
-    if @reviews[-1].match(/Wanda/)#rules here to check if positive
+    if @reviews[-1].scan(/Wanda/) != []#rules here to check if positive
       @performance = true
-    elsif @reviews[-1].match(/Zeke/)#rules here to check if negative
+    elsif @reviews[-1].scan(/Zeke/) != []#rules here to check if negative
       @performance = false
     else
       puts "Sorry - this review cannot determine the employee's performance."
     end
   end
+
+  #array.select {|n| n.match(/\b#{name}\b/i)}
 
   def set_performance(input)
     if input == "Good"
