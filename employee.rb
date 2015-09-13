@@ -17,25 +17,30 @@ class Employee
     @reviews << input
     counter = 0
     positive = []
-    positive_words = ["asset", "pleasure", "happy", "perfect", "devoted",]
-    positive_words.each do |word|
-      positive = @reviews[-1].scan(/\b#{word}\b/i)
+    p_words = ["asset", "happy", "perfect", "devote", "positive", "good", "great", "enjoy", "help others", "excellent", "exceed", "on time", "streamline", "adapt", "strong", "quick", "concise"]
+    p_words.each do |word|
+      positive = @reviews[-1].scan(/#{word}/i)
       counter += positive.length
     end
+    pos_exact_words = []
+    p_exact_words = ["satisfied", "consistent", "effective", "pleasure", "willing", "success", "successful", "encourage", "clear", "clearly"]
+    p_exact_words.each do |word|
+      pos_exact_words = @reviews[-1].scan(/\b#{word}\b/i)
+      counter += pos_exact_words.length
+    end
     negative = []
-    negative_words = ["improvement", "difficult", "confusion", "interrupt"]
-    negative_words.each do |word|
+    n_words = ["negative", "improvement", "difficult", "confusion", "interrupt", "longer", "inadequate", "issue", "concern", "dwell", "error", "harm", "complaint", "does not", "late", "absence", "attitude", "supervis", "wrong", "however", "lack", "poor"]
+    n_words.each do |word|
       negative = @reviews[-1].scan(/\b#{word}\b/i)
       counter -= negative.length
     end
-    negative_prefixes = []
-    neg_prefixes = ["dis", "anti", "non"]
+    n_prefixes = []
+    neg_prefixes = ["dis", "anti", "non"]# add in if I can get ^ to work
     neg_prefixes.each do |prefix|
-      negative_prefixes = @reviews[-1].scan(/#{prefix}\w+/i) #why isn't ^ working here??
-      puts negative_prefixes
-      counter -= negative_prefixes.length
+      n_prefixes = @reviews[-1].scan(/#{prefix}\w+/i) #why isn't ^ working here??
+      counter -= n_prefixes.length
     end
-    puts counter
+    puts counter #DELETE ONCE WORKING
     if counter >= 1
        @performance = true
     elsif counter <= 0
