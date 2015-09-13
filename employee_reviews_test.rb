@@ -40,7 +40,7 @@ class EmployeeReviewTest < Minitest::Test
   end
 
   def test_add_employee_to_department
-    law = Department.new("Law", [])
+    law = Department.new("Law")
     employee = Employee.new("Ilan", "ilan@gmail.com", "900-432-4320", 80000)
     assert law << employee
   end
@@ -76,7 +76,7 @@ class EmployeeReviewTest < Minitest::Test
     assert_equal false, employee2.performance
 
     employee3 = Employee.new("Wanda")
-    review3 = "Wanda has been an incredibly consistent and effective developer.  Clients are always satisfied with her work, developers are impressed with her productivity, and she's more than willing to help others even when she has a substantial workload of her own.  She is a great asset to Awesome Company, and everyone enjoys working with her.  During the past year, she has largely been devoted to work with the Cement Company, and she is the perfect woman for the job.  We know that work on a single project can become monotonous, however, so over the next few months, we hope to spread some of the Cement Company work to others.  This will also allow Wanda to pair more with others and spread her effectiveness to other projects."
+    review3 = "asset asset Wanda has been an incredibly consistent and effective developer.  Clients are always satisfied with her work, developers are impressed with her productivity, and she's more than willing to help others even when she has a substantial workload of her own.  She is a great asset to Awesome Company, and everyone enjoys working with her.  During the past year, she has largely been devoted to work with the Cement Company, and she is the perfect woman for the job.  We know that work on a single project can become monotonous, however, so over the next few months, we hope to spread some of the Cement Company work to others.  This will also allow Wanda to pair more with others and spread her effectiveness to other projects."
     employee3.reviews(review3)
     assert_equal true, employee3.performance
   end
