@@ -17,7 +17,7 @@ class Employee
     @reviews << input
     counter = 0
     positive = []
-    positive_words = ["asset", "pleasure", "happy", "perfect"]
+    positive_words = ["asset", "pleasure", "happy", "perfect", "devoted",]
     positive_words.each do |word|
       positive = @reviews[-1].scan(/\b#{word}\b/i)
       counter += positive.length
@@ -28,6 +28,14 @@ class Employee
       negative = @reviews[-1].scan(/\b#{word}\b/i)
       counter -= negative.length
     end
+    negative_prefixes = []
+    neg_prefixes = ["dis", "anti", "non"]
+    neg_prefixes.each do |prefix|
+      negative_prefixes = @reviews[-1].scan(/#{prefix}\w+/i) #why isn't ^ working here??
+      puts negative_prefixes
+      counter -= negative_prefixes.length
+    end
+    puts counter
     if counter >= 1
        @performance = true
     elsif counter <= 0
