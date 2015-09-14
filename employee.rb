@@ -4,7 +4,6 @@ class Employee
 
   attr_reader :name, :email, :phone, :salary, :reviews, :performance
 
-  #def initialize(name, email = "", phone = "", salary = 0)
   def initialize(name:, email: "", phone: "", salary: 0)
     @name = name
     @email = email
