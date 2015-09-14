@@ -1,2 +1,2 @@
 require './employee.rb'
-require './departments.rb'
+require './department.rb'

@@ -42,7 +42,7 @@ class EmployeeReviewTest < Minitest::Test
   def test_add_employee_to_department
     law = Department.new("Law")
     employee = Employee.new(name: "Ilan", email: "ilan@gmail.com", phone: "900-432-4320", salary: 80000)
-    assert law << employee
+    assert law.add_employee(employee)
   end
 
   def test_get_employee_info
@@ -58,9 +58,9 @@ class EmployeeReviewTest < Minitest::Test
   def test_get_total_salary_department
     law = Department.new("Law")
     employee = Employee.new(name: "Ilan", email: "ilan@gmail.com", salary: 80000)
-    law << employee
+    law.add_employee(employee)
     employee2 = Employee.new(name: "Ruti", salary: 100000)
-    law << employee2
+    law.add_employee(employee2)
     assert_equal 180000, law.total_employee_salary
   end
 
@@ -102,43 +102,27 @@ class EmployeeReviewTest < Minitest::Test
     assert_equal 120000, employee.give_raise(20000)
   end
 
-  def test_department_raise #modify this test to include the performance logic
+  def test_department_raise
     law = Department.new("Law")
     employee = Employee.new(name: "Ruti", salary: 100000)
-    law << employee
+    law.add_employee(employee)
     employee2 = Employee.new(name: "Ilan", salary: 80000)
     employee2.set_performance("Good")
-    law << employee2
+    law.add_employee(employee2)
     employee3 = Employee.new(name: "Joelle", salary: 120000)
     employee3.set_performance("Bad")
-    law << employee3
-    law.department_raise(9000)
-    assert_equal 100000, employee.salary
-    assert_equal 89000, employee2.salary
-    assert_equal 120000, employee3.salary
-  end
-
-  def test_department_raise_block
-    law = Department.new("Law")
-    employee = Employee.new(name: "Ruti", salary: 100000)
-    law << employee
-    employee2 = Employee.new(name: "Ilan", salary: 80000)
-    employee2.set_performance("Good")
-    law << employee2
-    employee3 = Employee.new(name: "Joelle", salary: 120000)
-    employee3.set_performance("Bad")
-    law << employee3
-    law.department_raise_block(9000){|employee| employee.performance == true}
+    law.add_employee(employee3)
+    law.department_raise(9000){|employee| employee.performance == true}
     assert_equal 100000, employee.salary
     assert_equal 89000, employee2.salary
     assert_equal 120000, employee3.salary
 
-    law.department_raise_block(9000){|employee| employee.salary > 90000}
+    law.department_raise(9000){|employee| employee.salary > 90000}
     assert_equal 104500, employee.salary
     assert_equal 89000, employee2.salary
     assert_equal 124500, employee3.salary
 
-    law.department_raise_block(9000){|employee| employee.salary < 100000}
+    law.department_raise(9000){|employee| employee.salary < 100000}
     assert_equal 104500, employee.salary
     assert_equal 98000, employee2.salary
     assert_equal 124500, employee3.salary

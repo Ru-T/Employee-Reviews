@@ -1,8 +1,7 @@
-require 'byebug'
-
 class Employee
 
   attr_reader :name, :email, :phone, :salary, :reviews, :performance
+  #question on above reader vs accessor
 
   def initialize(name:, email: "", phone: "", salary: 0)
     @name = name
@@ -10,7 +9,7 @@ class Employee
     @phone = phone
     @salary = salary
     @reviews = []
-    @performance = "Performance is not yet set."
+    @performance = false
   end
 
   def reviews(input)
@@ -37,7 +36,7 @@ class Employee
     n_prefixes = []
     neg_prefixes = ["dis", "anti", "non"]# add in if I can get ^ to work
     neg_prefixes.each do |prefix|
-      n_prefixes = @reviews[-1].scan(/#{prefix}\w+/i) #why isn't ^ working here??
+      n_prefixes = @reviews[-1].scan(/#{prefix}\w+/i) #\b is what I need, not ^
       counter -= n_prefixes.length
     end
     if counter >= 1
@@ -48,7 +47,7 @@ class Employee
     end
   end
 
-  def set_performance(input)
+  def set_performance(input) # better way to do this?
     if input == "Good"
       @performance = true
     elsif input == "Bad"
@@ -59,7 +58,7 @@ class Employee
   end
 
   def give_raise(amount)
-    @salary = @salary + amount
+    @salary += amount
   end
 
 end
